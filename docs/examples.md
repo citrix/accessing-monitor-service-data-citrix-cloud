@@ -18,7 +18,7 @@
 let
     Source = OData.Feed
              ( 
-"https://<YourCustomerId>.xdtesting.net/Citrix/monitor/odata/v4/data/Machines", 
+"https://<YourCustomerId>.xendesktop.net/Citrix/monitor/odata/v4/data/Machines", 
                           null, 
                           [
                           	Headers = 
@@ -34,9 +34,10 @@ in
 
 ![Advanced editor](./advanced-query.png)
 
-Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and bearer token you obtained as described in the Generate the Citrix Cloud Bearer Token section. Once the **No Syntax errors have been detected** is displayed in the bottom of the window, click **Done**.
+Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and bearer token you obtained as described in the Generate the Citrix Cloud Bearer Token section. Make sure that the <YourToken> is in the format, “CWSAuth bearer= <bearer token>”. Once the **No Syntax errors have been detected** is displayed in the bottom of the window, click **Done**.
+&#53; In case of first login, a Please specify how to connect message is displayed. Click Edit Credentials, the Access an OData feed window appears. Make sure that the Anonymous tab and the base URL are selected and click Connect.
 
-&#53; Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
+&#54; Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
 
 ## Example 2: C# Client Library
 
@@ -63,7 +64,7 @@ settings.BeforeRequest += request =>
     request.Headers.Add("Customer", "<customerId>");
 };
 
-settings.BaseUri = new Uri("https://<customerId>.xdtesting.net/Citrix/monitor/odata/v4/data");
+settings.BaseUri = new Uri("https://<customerId>.xendesktop.net/Citrix/monitor/odata/v4/data");
 client = new ODataClient(settings);
 ```
 
@@ -86,7 +87,7 @@ Below is a sample OData query triggered from PowerShell with the headers initial
 ```powershell
 PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Customer" = "<Your Customer Id>"}
 
-PS C:\> $url = https://<Your Customer Id>.xdtesting.net/Citrix/Monitor/OData/v4/Data/Users
+PS C:\> $url = https://<Your Customer Id>.xendesktop.net/Citrix/Monitor/OData/v4/Data/Users
 
 PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
@@ -102,7 +103,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 
 ## Aggregation Queries in Odata v4
 
-Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{customer-id}.xdtesting.net/Citrix/Monitor/Odata/v4/Data/<TableName>**
+Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{customer-id}.xendesktop.net/Citrix/Monitor/Odata/v4/Data/<TableName>**
 
 `?$apply=aggregate`([column to aggregate] with [aggregation type] as [new column name])
 
