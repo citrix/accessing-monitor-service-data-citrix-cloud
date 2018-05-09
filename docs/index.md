@@ -32,3 +32,4 @@ For the details of the Monitor Service schema, see [Monitor Service Schema](http
 
 To determine the values returned by the Monitor Service OData API, see [Citrix.Monitor.Model](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/api-reference/Monitor.Model/).
 
+For list of URLs for available data sets, see [URLs for Available Data Sets](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/#urls-for-available-data-sets). Replace {dc-host} with "<YourCustomerId>.xendesktop.net".
