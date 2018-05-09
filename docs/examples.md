@@ -1,6 +1,4 @@
-# Examples
-
-## Example 1: MS Excel PowerQuery 
+# Access via MS Excel PowerQuery 
 
 &#49;.	Open Excel (Excel 2016 has PowerQuery inbuilt. If you are using earlier versions of Excel, install PowerQuery, see [https://www.microsoft.com/en-in/download/details.aspx?id=39379)](https://www.microsoft.com/en-in/download/details.aspx?id=39379))
 
@@ -39,7 +37,7 @@ Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and b
 
 &#54; Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
 
-## Example 2: C# Client Library
+# Access via C# Client Library
 
 Use a Simple.OData.Client to create a C# client for an OData v4 endpoint. For information about installation of its Nuget Package, see [https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client](https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client).
 
@@ -80,7 +78,7 @@ public static async void GetMachines()
         }
 }
 ```
-## Example 3: PowerShell
+# Access via PowerShell
 
 Below is a sample OData query triggered from PowerShell with the headers initialized and the Raw XML output redirected to a file:
 
@@ -93,7 +91,7 @@ PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
 PS C:\> $result.Content > <Path-to-Output-File>
 ```
-## Example 4: REST clients (Ex. Postman Chrome Ext.)
+# Access via other REST clients (Ex. Postman Chrome Ext.)
 
 1.	Install Postman from Chrome extensions. See [https://chrome.google.com/webstore](https://chrome.google.com/webstore).
 2.	Launch the application.
@@ -101,7 +99,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 4.  Insert headers with your token and customerId. Click **Send**.
 1.  If authentication is successful, response data is seen in the Response section of Postman.
 
-## Aggregation Queries in Odata v4
+# Aggregation Queries in Odata v4
 
 Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{customer-id}.xendesktop.net/Citrix/Monitor/Odata/v4/Data/<TableName>**
 
