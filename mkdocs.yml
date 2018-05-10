@@ -10,4 +10,3 @@ markdown_extensions:
 
 pages:
 - Home: index.md
-- Access methods: examples.md
