@@ -34,6 +34,7 @@ To determine the values returned by the Monitor Service OData API, see [Citrix.M
 
 The list of URLs for available data sets is available at [URLs for Available Data Sets](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/#urls-for-available-data-sets). Replace {dc-host} with "{YourCustomerId}.xendesktop.net".
 
+# Access methods
 ## Access using MS Excel PowerQuery 
 
 &#49;.	Open Excel (Excel 2016 has PowerQuery inbuilt. If you are using earlier versions of Excel, install PowerQuery, see [https://www.microsoft.com/en-in/download/details.aspx?id=39379)](https://www.microsoft.com/en-in/download/details.aspx?id=39379))
@@ -73,7 +74,7 @@ Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and b
 
 &#54; Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
 
-# Access using C# Client Library
+## Access using C# Client Library
 
 Use a Simple.OData.Client to create a C# client for an OData v4 endpoint. For information about installation of its Nuget Package, see [https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client](https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client).
 
@@ -114,7 +115,7 @@ public static async void GetMachines()
         }
 }
 ```
-# Access using PowerShell
+## Access using PowerShell
 
 Below is a sample OData query triggered from PowerShell with the headers initialized and the Raw XML output redirected to a file:
 
@@ -127,7 +128,7 @@ PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
 PS C:\> $result.Content > <Path-to-Output-File>
 ```
-# Access using other REST clients (Ex. Postman Chrome Ext.)
+## Access using other REST clients (Ex. Postman Chrome Ext.)
 
 1.	Install Postman from Chrome extensions. See [https://chrome.google.com/webstore](https://chrome.google.com/webstore).
 2.	Launch the application.
