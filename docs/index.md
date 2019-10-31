@@ -26,7 +26,7 @@ You can obtain the bearer token using either of the following methods:
 
 ### Method 2: Citrix Cloud API:
 
-You may obtain the bearer token using the Citrix Cloud APIs. For more information on the steps, see [https://developer.cloud.com/authenticate_api_client.html](https://developer.cloud.com/authenticate_api_client.html)
+You may obtain the bearer token using the Citrix Cloud APIs. For more information on the steps, see [https://developer.cloud.com/getting-started](https://developer.cloud.com/getting-started)
 
 For the details of the Monitor Service schema, see [Monitor Service Schema](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/#monitor-service-schema).
 
