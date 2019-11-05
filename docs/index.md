@@ -158,7 +158,7 @@ This gives the minimum of all the life cycle states.
 
 # OData Pagination
 
-Citrix Monitor supports OData pagination. All the OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. The following PowerShell script fetches applications in batches of 100 records using Citrix Cloud authentication following the **@odata.nextLink** property in the response.
+Citrix Monitor supports OData pagination. All OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. The following PowerShell script fetches applications in batches of 100 records using Citrix Cloud authentication following the **@odata.nextLink** property in the response.
 
 ```powershell
 $customerId = "[customerid]"
