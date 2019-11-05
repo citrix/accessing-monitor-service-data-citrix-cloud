@@ -1,16 +1,16 @@
 # Access Monitor Service data using the OData v4 endpoint in Citrix Cloud
 
-You can now query the Monitor Service data using the OData Version 4 endpoint based on ASP .Net Web API. Customers can now run aggregation queries on the Monitor Service data; this feature was not available in OData Version 3 or earlier. 
+You can now query the Monitor Service data using the OData Version 4 endpoint based on ASP .Net Web API. Customers can now run aggregation queries on the Monitor Service data; this feature was not available in OData Version 3 or earlier.
 
 A Citrix Cloud customer can access the data with the V4 endpoint after authentication using the Citrix Cloud username and authentication token or the bearer token.
 
 
-!!!tip "Note" 
+!!!tip "Note"
         To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds.
 
 ## Generate Citrix Cloud Bearer Token
 
-You can obtain the bearer token using either of the following methods: 
+You can obtain the bearer token using either of the following methods:
 
 ### Method 1: XenApp and XenDesktop Remote PowerShell SDK
 
@@ -35,7 +35,7 @@ To determine the values returned by the Monitor Service OData API, see [Citrix.M
 The list of URLs for available data sets is available at [URLs for Available Data Sets](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/#urls-for-available-data-sets). Replace {dc-host} with "{YourCustomerId}.xendesktop.net".
 
 # Access methods
-## Access using MS Excel PowerQuery 
+## Access using MS Excel PowerQuery
 
 &#49;.	Open Excel (Excel 2016 has PowerQuery inbuilt. If you are using earlier versions of Excel, install PowerQuery, see [https://www.microsoft.com/en-in/download/details.aspx?id=39379)](https://www.microsoft.com/en-in/download/details.aspx?id=39379))
 
@@ -52,11 +52,11 @@ The list of URLs for available data sets is available at [URLs for Available Dat
 ```js
 let
     Source = OData.Feed
-             ( 
-"https://<YourCustomerId>.xendesktop.net/Citrix/monitor/odata/v4/data/Machines", 
-                          null, 
+             (
+"https://<YourCustomerId>.xendesktop.net/Citrix/monitor/odata/v4/data/Machines",
+                          null,
                           [
-                          	Headers = 
+                          	Headers =
                                     [
                                     	Authorization = "<YourToken>",
                                      	Customer = "<YourCustomerId>"
@@ -93,7 +93,7 @@ As the OData query in the Cloud requires the Citrix Cloud authentication, the OD
 
 ```js
 ODataClientSettings settings = new ODataClientSettings();
-settings.BeforeRequest += request => 
+settings.BeforeRequest += request =>
 {
     request.Headers.Add("Authorization", "<BearerToken>");
     request.Headers.Add("Customer", "<customerId>");
@@ -155,3 +155,26 @@ This gives the sum of session types in Sessions.
 * Min : `Machines?$apply=aggregate(LifecycleState with min as MinimumLCstate)`
 
 This gives the minimum of all the life cycle states.
+
+# OData Pagination
+
+Citrix Monitor supports OData pagination. All the OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. The following PowerShell script fetches applications in batches of 100 records using Citrix Cloud authentication following the **@odata.nextLink** property in the response.
+
+```powershell
+$customerId = "[customerid]"
+$api = "https://$customerId.xendesktop.net/citrix/monitor/odata/v4/data"
+$endpoint = "$api/Applications"
+
+$bearer = "CWSAuth bearer=[token]"
+$headers = @{'Customer'=$customerId;'Authorization'=$bearer}
+
+$results = Invoke-RestMethod $endpoint -Headers $headers -Verbose
+Write-Host “Number of items returned in the first call : ”, $results.value.Count
+
+while($results.'@odata.nextLink' -ne $null)
+{
+    $results = Invoke-RestMethod $results.'@odata.nextLink' -Headers $headers -Verbose
+    Write-Host “Number of items returned in next call : ”, $results.value.Count
+}
+
+```
