@@ -64,3 +64,4 @@ markdown_extensions:
 # Page tree
 nav:
 - Home: index.md
+- Questions?: https://discussions.citrix.com/forum/1385-citrix-developer-exchange/
