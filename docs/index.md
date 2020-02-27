@@ -171,10 +171,10 @@ $headers = @{'Customer'=$customerId;'Authorization'=$bearer}
 $results = Invoke-RestMethod $endpoint -Headers $headers -Verbose
 Write-Host “Number of items returned in the first call : ”, $results.value.Count
 
-while($results.'@odata.nextLink'.Replace("http","https") -ne $null)
+while($results.'@odata.nextLink' -ne $null)
 {
-    $results = Invoke-RestMethod $results.'@odata.nextLink' -Headers $headers -Verbose
-    Write-Host “Number of items returned in next call : ”, $results.value.Count
+    $results = Invoke-RestMethod $results.'@odata.nextLink'.Replace("http","https") -Headers $headers -Verbose
+    Write-Host "Number of items returned in next call : ", $results.value.Count
 }
 
 ```
