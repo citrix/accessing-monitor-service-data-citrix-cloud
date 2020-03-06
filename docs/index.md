@@ -70,9 +70,10 @@ in
 ![Advanced editor](./advanced-query.png)
 
 Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and bearer token you obtained as described in the Generate the Citrix Cloud Bearer Token section. Make sure that the <YourToken> is in the format, “CWSAuth bearer= <bearer token>”. Once the **No Syntax errors have been detected** is displayed in the bottom of the window, click **Done**.
-&#53; In case of first login, a Please specify how to connect message is displayed. Click Edit Credentials, the Access an OData feed window appears. Make sure that the Anonymous tab and the base URL are selected and click Connect.
+	
+&#53;. In case of first login, a Please specify how to connect message is displayed. Click Edit Credentials, the Access an OData feed window appears. Make sure that the Anonymous tab and the base URL are selected and click Connect.
 
-&#54; Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
+&#54;. Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
 
 ## Access using C# Client Library
 
