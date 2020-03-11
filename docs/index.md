@@ -141,7 +141,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 
 Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{customer-id}.xendesktop.net/Citrix/Monitor/Odata/v4/Data/<TableName>**
 
-`?$apply=aggregate`([column to aggregate] with [aggregation type] as [new column name])
+`?$apply=aggregate`([column to aggregate] with [aggregation type] as [column to aggregate])
 
 **Aggregation Types:**
 
@@ -149,11 +149,11 @@ Aggregation queries were not supported in OData Version 3 and earlier. It is sup
 
 This gives the total number of machines.
 
-* Sum : `Sessions?$apply=aggregate(SessionType with sum as Total)`
+* Sum : `Sessions?$apply=aggregate(SessionType with sum as SessionType)`
 
 This gives the sum of session types in Sessions.
 
-* Min : `Machines?$apply=aggregate(LifecycleState with min as MinimumLCstate)`
+* Min : `Machines?$apply=aggregate(LifecycleState with min as LifecycleState)`
 
 This gives the minimum of all the life cycle states.
 
