@@ -38,7 +38,7 @@ The list of URLs for available data sets is available at [URLs for Available Dat
 
 Here's a video explaining the various use cases of OData APIs and PowerShell SDK used in Citrix Virtual Apps and Desktops. 
 
-[![OData APIs and PowerShell SDK use cases walk-through video](https://img.youtube.com/vi/OEik9pY9MeQ/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE-VIDEO-ID "OData APIs and PowerShell SDK use cases walk-through video")
+[![OData APIs and PowerShell SDK use cases walk-through video](https://img.youtube.com/vi/OEik9pY9MeQ/0.jpg)](https://www.youtube.com/watch?v=OEik9pY9MeQ "OData APIs and PowerShell SDK use cases walk-through video")
 
 # Access methods
 ## Access using MS Excel PowerQuery
