@@ -34,6 +34,12 @@ To determine the values returned by the Monitor Service OData API, see [Citrix.M
 
 The list of URLs for available data sets is available at [URLs for Available Data Sets](https://developer-docs.citrix.com/projects/monitor-service-odata-api/en/7.16/#urls-for-available-data-sets). Replace {dc-host} with "{YourCustomerId}.xendesktop.net".
 
+### Use cases and walk-through of OData APIs ands PowerShell SDK
+
+Here's a video explaining the various use cases of OData APIs and PowerShell SDK used in Citrix Virtual Apps and Desktops. 
+
+[![OData APIs and PowerShell SDK use cases walk-through video](https://img.youtube.com/vi/OEik9pY9MeQ/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE-VIDEO-ID "OData APIs and PowerShell SDK use cases walk-through video")
+
 # Access methods
 ## Access using MS Excel PowerQuery
 
