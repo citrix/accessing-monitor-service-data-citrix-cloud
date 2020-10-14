@@ -2,6 +2,9 @@
 
 You can now query the Monitor Service data using the OData Version 4 endpoint based on ASP .Net Web API. Customers can now run aggregation queries on the Monitor Service data; this feature was not available in OData Version 3 or earlier.
 
+!!!tip "Note"
+        Accessing Monitor Service data using the OData v4 endpoint in Citrix Cloud is currently available as a preview only.
+
 A Citrix Cloud customer can access the data with the V4 endpoint after authentication using the Citrix Cloud username and authentication token or the bearer token.
 
 
