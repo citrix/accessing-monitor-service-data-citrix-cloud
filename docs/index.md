@@ -6,7 +6,11 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 
 
 !!!tip "Note"
-        To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds.
+        To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds. If you exceed the limit of one request at a time, a **429 Too Many Requests** response status code is returned.
+
+## HTTP error codes
+
+See [HTTP error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to know about the various error codes and their descriptions.
 
 ## Generate Citrix Cloud Bearer Token
 
