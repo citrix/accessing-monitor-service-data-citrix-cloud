@@ -160,7 +160,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 
 # Aggregation Queries in Odata v4
 
-Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}<TableName>**
+Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}/<TableName>**
 
 `?$apply=aggregate`([column to aggregate] with [aggregation type] as [column to aggregate])
 
