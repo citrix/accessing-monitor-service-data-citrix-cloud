@@ -11,6 +11,14 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 !!!tip "Note"
         To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds. If you exceed the limit of one request at a time, a **429 Too Many Requests** response status code is returned.
 
+## Supported API Gateway endpoints
+
+* US region: https://api-us.cloud.com/monitorodata
+* EU region: https://api-eu.cloud.com/monitorodata
+* AP-S region: https://api-ap-s.cloud.com/monitorodata
+
+The "https://<Customer Id>.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
+
 ## HTTP error codes
 
 See [HTTP error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to know about the various error codes and their descriptions.
@@ -66,7 +74,7 @@ Here's a video explaining the various use cases of OData APIs and PowerShell SDK
 let
     Source = OData.Feed
              (
-"https://<YourCustomerId>.xendesktop.net/Citrix/monitor/odata/v4/data/Machines",
+"https://{ApiGatewayEndpoint}/Machines",
                           null,
                           [
                           	Headers =
@@ -113,7 +121,7 @@ settings.BeforeRequest += request =>
     request.Headers.Add("Customer", "<customerId>");
 };
 
-settings.BaseUri = new Uri("https://<customerId>.xendesktop.net/Citrix/monitor/odata/v4/data");
+settings.BaseUri = new Uri("https://{ApiGatewayEndpoint}/data");
 client = new ODataClient(settings);
 ```
 
@@ -136,7 +144,7 @@ Below is a sample OData query triggered from PowerShell with the headers initial
 ```powershell
 PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Customer" = "<Your Customer Id>"}
 
-PS C:\> $url = https://<Your Customer Id>.xendesktop.net/Citrix/Monitor/OData/v4/Data/Users
+PS C:\> $url = https://{ApiGatewayEndpoint}/Data/Users
 
 PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
@@ -152,7 +160,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 
 # Aggregation Queries in Odata v4
 
-Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{customer-id}.xendesktop.net/Citrix/Monitor/Odata/v4/Data/<TableName>**
+Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}/Data/<TableName>**
 
 `?$apply=aggregate`([column to aggregate] with [aggregation type] as [column to aggregate])
 
@@ -176,7 +184,7 @@ Citrix Monitor supports OData pagination. All OData v4 endpoints return a maximu
 
 ```powershell
 $customerId = "[customerid]"
-$api = "https://$customerId.xendesktop.net/citrix/monitor/odata/v4/data"
+$api = "https://{ApiGatewayEndpoint}/data"
 $endpoint = "$api/Applications"
 
 $bearer = "CWSAuth bearer=[token]"
