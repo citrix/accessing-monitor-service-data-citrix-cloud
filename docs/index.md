@@ -121,7 +121,7 @@ settings.BeforeRequest += request =>
     request.Headers.Add("Customer", "<customerId>");
 };
 
-settings.BaseUri = new Uri("https://{ApiGatewayEndpoint}/data");
+settings.BaseUri = new Uri("https://{ApiGatewayEndpoint}");
 client = new ODataClient(settings);
 ```
 
@@ -144,7 +144,7 @@ Below is a sample OData query triggered from PowerShell with the headers initial
 ```powershell
 PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Customer" = "<Your Customer Id>"}
 
-PS C:\> $url = https://{ApiGatewayEndpoint}/Data/Users
+PS C:\> $url = https://{ApiGatewayEndpoint}/Users
 
 PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
@@ -160,7 +160,7 @@ PS C:\> $result.Content > <Path-to-Output-File>
 
 # Aggregation Queries in Odata v4
 
-Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}/Data/<TableName>**
+Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}<TableName>**
 
 `?$apply=aggregate`([column to aggregate] with [aggregation type] as [column to aggregate])
 
@@ -184,7 +184,7 @@ Citrix Monitor supports OData pagination. All OData v4 endpoints return a maximu
 
 ```powershell
 $customerId = "[customerid]"
-$api = "https://{ApiGatewayEndpoint}/data"
+$api = "https://{ApiGatewayEndpoint}"
 $endpoint = "$api/Applications"
 
 $bearer = "CWSAuth bearer=[token]"
