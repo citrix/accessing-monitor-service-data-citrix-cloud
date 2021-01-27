@@ -17,7 +17,7 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 * EU region: https://api-eu.cloud.com/monitorodata
 * AP-S region: https://api-ap-s.cloud.com/monitorodata
 
-The "https://<Customer Id>.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
+The "https://<Customer_Id>.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
 
 ## HTTP error codes
 
