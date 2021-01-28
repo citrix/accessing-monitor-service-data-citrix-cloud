@@ -17,7 +17,7 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 * EU region: https://api-eu.cloud.com/monitorodata
 * AP-S region: https://api-ap-s.cloud.com/monitorodata
 
-The "https://<Customer_Id>.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
+The "https://{Customer_Id}.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
 
 ## HTTP error codes
 
@@ -90,7 +90,7 @@ in
 
 ![Advanced editor](./advanced-query.png)
 
-Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and bearer token you obtained as described in the Generate the Citrix Cloud Bearer Token section. Make sure that the <YourToken> is in the format, “CWSAuth bearer= <bearer token>”. Once the **No Syntax errors have been detected** is displayed in the bottom of the window, click **Done**.
+Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and bearer token you obtained as described in the Generate the Citrix Cloud Bearer Token section. Make sure that the `<YourToken>` is in the format, “CWSAuth bearer= <bearer token>”. Once the **No Syntax errors have been detected** is displayed in the bottom of the window, click **Done**.
 	
 &#53;. In case of first login, a Please specify how to connect message is displayed. Click Edit Credentials, the Access an OData feed window appears. Make sure that the Anonymous tab and the base URL are selected and click Connect.
 
@@ -195,7 +195,7 @@ Write-Host “Number of items returned in the first call : ”, $results.value.C
 
 while($results.'@odata.nextLink' -ne $null)
 {
-    $results = Invoke-RestMethod $results.'@odata.nextLink'.Replace("http","https") -Headers $headers -Verbose
+    $results = Invoke-RestMethod $results.'@odata.nextLink' -Headers $headers -Verbose
     Write-Host "Number of items returned in next call : ", $results.value.Count
 }
 
