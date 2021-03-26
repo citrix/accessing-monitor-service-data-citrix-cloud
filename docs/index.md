@@ -17,8 +17,10 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 * EU region: https://api-eu.cloud.com/monitorodata
 * AP-S region: https://api-ap-s.cloud.com/monitorodata
 
-The "https://{Customer_Id}.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
-
+!!!tip "Note"
+      The "https://{Customer_Id}.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
+      The HTTP header "Customer" is now replaced with "Citrix-CustomerId". 
+      
 ## HTTP error codes
 
 See [HTTP error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to know about the various error codes and their descriptions.
@@ -118,7 +120,7 @@ ODataClientSettings settings = new ODataClientSettings();
 settings.BeforeRequest += request =>
 {
     request.Headers.Add("Authorization", "<BearerToken>");
-    request.Headers.Add("Customer", "<customerId>");
+    request.Headers.Add("Citrix-CustomerId", "<customerId>");
 };
 
 settings.BaseUri = new Uri("https://{ApiGatewayEndpoint}");
@@ -142,7 +144,7 @@ public static async void GetMachines()
 Below is a sample OData query triggered from PowerShell with the headers initialized and the Raw XML output redirected to a file:
 
 ```powershell
-PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Customer" = "<Your Customer Id>"}
+PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Citrix-CustomerId" = "<Your Customer Id>"}
 
 PS C:\> $url = https://{ApiGatewayEndpoint}/Users
 
@@ -188,7 +190,7 @@ $api = "https://{ApiGatewayEndpoint}"
 $endpoint = "$api/Applications"
 
 $bearer = "CWSAuth bearer=[token]"
-$headers = @{'Customer'=$customerId;'Authorization'=$bearer}
+$headers = @{'Citrix-CustomerId'=$customerId;'Authorization'=$bearer}
 
 $results = Invoke-RestMethod $endpoint -Headers $headers -Verbose
 Write-Host “Number of items returned in the first call : ”, $results.value.Count
