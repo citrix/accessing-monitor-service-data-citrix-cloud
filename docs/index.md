@@ -80,7 +80,7 @@ let
                           	Headers =
                                     [
                                     	Authorization = "<YourToken>",
-                                     	Customer = "<YourCustomerId>"
+                                     	Citrix-CustomerId = "<YourCustomerId>"
                                     ]
                           ]
                )
