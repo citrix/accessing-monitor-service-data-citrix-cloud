@@ -82,8 +82,8 @@ let
                           [
                           	Headers =
                                     [
-                                    	Authorization = "<YourToken>",
-                                     	Citrix-CustomerId = "<YourCustomerId>"
+                                    	#”Authorization” = "<YourToken>",
+                                     	#"Citrix-CustomerId" = "<YourCustomerId"
                                     ]
                           ]
                )
