@@ -16,11 +16,13 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 * US region: https://api-us.cloud.com/monitorodata
 * EU region: https://api-eu.cloud.com/monitorodata
 * AP-S region: https://api-ap-s.cloud.com/monitorodata
+* Japan region: https://api.citrixcloud.jp/monitorodata
 
 !!!tip "Note"
      * The "https://{Customer_Id}.xendesktop.net/Citrix/monitor/odata/v4/data" URL is replaced with "https://{ApiGatewayEndpoint}".
       The HTTP header "Customer" is now replaced with "Citrix-CustomerId". 
-     * For Government and Japan (https://<customerid>.apps.citrixworkspacesapi.jp) customers, the existing URLs and header name (Customer) remain unchanged.  
+     * For Japan, the https://{Customer Id}.apps.citrixworkspacesapi.jp/Citrix/monitor/odata/v4/data URL is replaced with new Gateway Endpoint "https://api.citrixcloud.jp". The HTTP header "Customer" is now replaced with "Citrix-CustomerId".
+     * For Government customers, the existing URLs and header name (Customer) remain unchanged.  
       
 ## HTTP error codes
 
