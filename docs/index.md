@@ -1,4 +1,4 @@
-# How to aAccess Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud
+# How to access Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud
 
 Use the OData version 4 endpoint based on ASP .Net Web API to access the Citrix Monitor Service data. It supports pagination and OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. You can run aggregation queries on the Citrix Monitor Service data. This feature was not available in OData Version 3 or earlier.
 
