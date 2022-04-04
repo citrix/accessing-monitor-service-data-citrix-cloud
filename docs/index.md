@@ -1,17 +1,27 @@
-# Access Monitor Service data using the OData v4 endpoint in Citrix Cloud
+# How to access Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud
 
-You can now query the Monitor Service data using the OData Version 4 endpoint based on ASP .Net Web API. Customers can now run aggregation queries on the Monitor Service data; this feature was not available in OData Version 3 or earlier.
+Use the OData version 4 endpoint based on ASP .Net Web API to access the Citrix Monitor Service data. It supports pagination and OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. You can run aggregation queries on the Citrix Monitor Service data. This feature was not available in OData Version 3 or earlier.
 
-!!!tip "Note"
-        Accessing Monitor Service data using the OData v4 endpoint in Citrix Cloud is currently under preview.
+To access the Citrix Monitor Service data, follow the prerequisites, use cases and walkthroughs of OData APIs and Powershell SDKs, and different access methods.
 
-A Citrix Cloud customer can access the data with the V4 endpoint after authentication using the Citrix Cloud username and authentication token or the bearer token.
+You can make API requests using the MS Excel PowerQuery, C#, PowerShell, or any tool that support invoking the REST API.
 
+>**Note:**
+>
+> Accessing Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud is currently under preview.
 
-!!!tip "Note"
-        To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds. If you exceed the limit of one request at a time, a **429 Too Many Requests** response status code is returned.
+## Prerequisites to access Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud
+
+- Know the supported endpoints
+- Generate Citrix Cloud bearer token. For more information, see [Get started with Citrix Cloud APIs](https://developer.cloud.com/getting-started/docs/overview) section.
+
+>**Note:**
+>
+> To ensure optimal performance and resource utilization of the Delivery Controller, one OData query is permitted per customer at a time. Query time out is 30 seconds. If you exceed the limit of one request at a time, a **429 Too Many Requests** response status code is returned.
 
 ## Supported API Gateway endpoints
+
+Use one of the following endpoints based on the geographical region you selected while accessing the Citrix Monitor Service data:
 
 * US region: https://api-us.cloud.com/monitorodata
 * EU region: https://api-eu.cloud.com/monitorodata
@@ -28,11 +38,13 @@ A Citrix Cloud customer can access the data with the V4 endpoint after authentic
 
 See [HTTP error codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to know about the various error codes and their descriptions.
 
-## Generate Citrix Cloud Bearer Token
+## Generate Citrix Cloud bearer token
 
 You can obtain the bearer token using either of the following methods:
 
-### Method 1: XenApp and XenDesktop Remote PowerShell SDK
+### Method 1: Citrix DaaS Remote PowerShell SDK
+
+Generate Citrix Cloud bearer token using Citrix DaaS (formerly Citrix Virtual Apps and Desktops service) PowerShell SDK as follows:
 
 1.	Download the Remote PowerShell SDK from [here](http://download.apps.cloud.com/CitrixPoshSdk.exe).
 2.	Install the SDK on any computer in your resource location.
@@ -44,7 +56,7 @@ You can obtain the bearer token using either of the following methods:
 8.	The list contains a variable, `GLOBAL:XDAuthToken` containing bearer token as value.
 9.	Copy the bearer token value to be used in the OData query.
 
-### Method 2: Citrix Cloud API:
+### Method 2: Citrix Cloud API service
 
 You may obtain the bearer token using the Citrix Cloud APIs. For more information on the steps, see [https://developer.cloud.com/getting-started](https://developer.cloud.com/getting-started)
 
@@ -56,12 +68,15 @@ The list of URLs for available data sets is available at [URLs for Available Dat
 
 ### Use cases and walk-through of OData APIs ands PowerShell SDK
 
-Here's a video explaining the various use cases of OData APIs and PowerShell SDK used in Citrix Virtual Apps and Desktops. 
+Here's a video explaining the various use cases of OData APIs and PowerShell SDK used in Citrix DaaS. 
 
 [![OData APIs and PowerShell SDK use cases walk-through video](https://img.youtube.com/vi/OEik9pY9MeQ/0.jpg)](https://www.youtube.com/watch?v=OEik9pY9MeQ "OData APIs and PowerShell SDK use cases walk-through video")
 
-# Access methods
-## Access using MS Excel PowerQuery
+# Different methods to access Citrix Monitor Service data using the OData v4 endpoint in Citrix Cloud
+
+## Access Citrix Monitor Service data using MS Excel PowerQuery
+
+Learn from the following example to access the Citrix Monitor Service data using MS Excel PowerQuery.
 
 &#49;.	Open Excel (Excel 2016 has PowerQuery inbuilt. If you are using earlier versions of Excel, install PowerQuery, see [https://www.microsoft.com/en-in/download/details.aspx?id=39379)](https://www.microsoft.com/en-in/download/details.aspx?id=39379))
 
@@ -101,22 +116,25 @@ Replace `<YourCustomerId>` and `<YourToken>` with the values of CustomerID and b
 
 &#54;. Upon successful authentication, the results are displayed as a table. In this example, the table lists all the Machines of the CustomerId. If the authentication fails, either the bearer token or the CustomerId might be invalid. Please verify the same and try again.
 
-## Access using C# Client Library
+## Access Citrix Monitor Service data using C# client library
 
-Use a Simple.OData.Client to create a C# client for an OData v4 endpoint. For information about installation of its Nuget Package, see [https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client](https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client).
+Learn from the following example to access the Citrix Monitor Service data using C#.
 
-Install the package using the Nuget Package Manager:
+Steps to access Citrix Monitor Service data using C#
+1.  Create a C# client for an OData v4 endpoint using a Simple.OData.Client. For information about installation of its Nuget Package, see [https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client](https://github.com/object/Simple.OData.Client/wiki/Getting-started-with-Simple.OData.Client).
+1.  Install the package using the Nuget Package Manager:
 
 ```
 Install-Package Simple.OData.Client
 ```
-After installation, use the package with the following command:
+
+1.  After installation, use the package with the following command:
 
 ```
 using Simple.OData.Client;
 ```
 
-As the OData query in the Cloud requires the Citrix Cloud authentication, the OData clients must pass the bearer token (as documented in the **Generate Citrix Cloud Bearer Token** section) and the CustomerId. Set up the headers as follows, before creating the OData query:
+1.  As the OData query in the Cloud requires the Citrix Cloud authentication, the OData clients must pass the bearer token (as documented in the **Generate Citrix Cloud Bearer Token** section) and the CustomerId. Set up the headers as follows, before creating the OData query:
 
 ```js
 ODataClientSettings settings = new ODataClientSettings();
@@ -130,7 +148,7 @@ settings.BaseUri = new Uri("https://{ApiGatewayEndpoint}");
 client = new ODataClient(settings);
 ```
 
-Data can be retrieved by using async methods. This example lists all the Machines
+1.  Use async methods to retrieve data. The following example lists all machines from Citrix DaaS site.
 
 ```js
 public static async void GetMachines()
@@ -142,9 +160,9 @@ public static async void GetMachines()
         }
 }
 ```
-## Access using PowerShell
+## Access Citrix Monitor Service data using PowerShell
 
-Below is a sample OData query triggered from PowerShell with the headers initialized and the Raw XML output redirected to a file:
+Learn from the following example to access the Citrix Monitor Service data using PowerShell.  This is a sample OData query triggered from PowerShell with the headers initialized and the Raw XML output redirected to a file:
 
 ```powershell
 PS C:\> $headers = @{"Authorization" = "<BearerToken>”; "Citrix-CustomerId" = "<Your Customer Id>"}
@@ -155,15 +173,17 @@ PS C:\> $result = Invoke-WebRequest -Uri $url -Headers $headers
 
 PS C:\> $result.Content > <Path-to-Output-File>
 ```
-## Access using other REST clients (Ex. Postman Chrome Ext.)
+## Access Citrix Monitor Service data using any REST API tool
+
+Learn from the following example to access the Citrix Monitor Service data using any REST API tool, for example Postman Chrome Ext.
 
 1.	Install Postman from Chrome extensions. See [https://chrome.google.com/webstore](https://chrome.google.com/webstore).
-2.	Launch the application.
-3.	Select GET in the dropdown and type in the URL to request. ![Postman](./postman.png)
-4.  Insert headers with your token and customerId. Click **Send**.
+1.	Launch the application.
+1.	Select GET in the dropdown and type in the URL to request. ![Postman](./postman.png)
+1.  Insert headers with your token and customerId. Click **Send**.
 1.  If authentication is successful, response data is seen in the Response section of Postman.
 
-# Aggregation Queries in Odata v4
+# Use OData V4 aggregation queries in Citrix Monitor Service data
 
 Aggregation queries were not supported in OData Version 3 and earlier. It is supported in OData Version 4. As per [OData documentation](http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html), aggregation can be done using the `$apply=aggregate()` field. Below are few examples that show data aggregation. Use them after **https://{ApiGatewayEndpoint}/<TableName>**
 
@@ -183,7 +203,7 @@ This gives the sum of session types in Sessions.
 
 This gives the minimum of all the life cycle states.
 
-# OData Pagination
+# Use OData pagination in Citrix Monitor Service data 
 
 Citrix Monitor supports OData pagination. All OData v4 endpoints return a maximum of 100 records per page with a link to the next 100 records. The following PowerShell script fetches applications in batches of 100 records using Citrix Cloud authentication following the **@odata.nextLink** property in the response.
 
